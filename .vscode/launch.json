@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdiolib.h>
+
+// Função para calcular e imprimir a sequência de Collatz
+void collatzSequence(int n) {
+    printf("Sequencia de Collatz para %d: ", n);
+    while (n != 1) {
+        printf("%d -> ", n);
+        if (n % 2 == 0) {
+            n /= 2;
+        } else {
+            n = 3 * n + 1;
+        }
+    }
+    printf("%d\n", n); // Imprime o último número da sequência, que é 1
+}
+
+int main() {
+    int num;
+
+    // Solicita o número ao usuário
+    printf("Digite um número inteiro positivo superior a 1: ");
+    scanf("%d", &num);
+
+    // Verifica se o número é válido
+    if (num <= 1) {
+        printf("O número deve ser maior que 1.\n");
+        return 1; // Retorna 1 para indicar erro
+    }
+
+    // Calcula e imprime a sequência de Collatz
+    collatzSequence(num);
+
+    return 0; // Retorna 0 para indicar sucesso
+}
