@@ -1,12 +1,15 @@
 <?php
+require_once "classes/Tipo.php";
 require_once "classes/Usuario.php";
 $usuario=new Usuario();
+$tipo= new Tipo();
 $lista=$usuario->listar();
+$listatipo=$tipo->listar();
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,8 +18,8 @@ $lista=$usuario->listar();
     <link rel="stylesheet" href="estilo.css">
 
     <title>Argentina</title>
-  </head>
-  <body>
+</head>
+<body>
     <h1>Se cadastra seu baitola</h1>
     <form action="efetuar-cadastro.php" method="POST">
         <h1>Cadastro</h1>
@@ -26,9 +29,19 @@ $lista=$usuario->listar();
         <input type="email" id="email" name="email">
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha">
-        <button type="submit" class="btn-login">Cadastrar-se</button>
+        <select name="tipo" id="tipo">
+      <option value='2'>Selecione</option> 
+            <?php
+              foreach($listatipo as $tipo):
+              echo "<option value='{$tipo['id']}'>
+              {$tipo['tipo']}
+              </option>";
+              endforeach;
+            ?>
+        </select>
+        <button type="submit" class="btn-login">Cadastre-se</button>
     </form>
-    <footer class="text-dark"  style="background-color: #b8d1e6;">
+<footer class="text-dark"  style="background-color: #b8d1e6;">
   <div class="container-fluid py-3">
     <p><strong>Projeto Volta ao Mundo - Argentina</strong></p>
   </div>
@@ -38,5 +51,5 @@ $lista=$usuario->listar();
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>

@@ -1,17 +1,19 @@
 <?php
 $email = $_POST["email"];
-$senha = $_POST["senha"];
+$senhalimpa= $_POST["senha"];
+$senha=hash("sha256",$senhalimpa);
 
 
-$sql = "SELECT * FROM usuario WHERE
-        email='{$email}' and senha='{$senha}'";
+$sql = "SELECT * FROM usuario WHERE 
+        email=:email and senha=:senha";
 
 include_once "classes/conexao.php";
-$resultado = $conexao->query($sql);
-$linha = $resultado->fetch();
-$usuario_logado = $linha['email'];
-$diretiva =  $linha['diretiva'];
-
+$resultado = $conexao->prepare($sql);
+$resultado->bindParam(':email', $email);
+$resultado->bindParam(':senha', $senha);
+$resultado->execute();
+$linha=$resultado->fetch();
+$usuario_logado=$linha ['email'];
 
 
 
