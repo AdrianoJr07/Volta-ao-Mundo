@@ -1,15 +1,17 @@
 <?php
-require_once "classes/Tipo.php";
-require_once "classes/Usuario.php";
-$usuario=new Usuario();
-$tipo= new Tipo();
-$lista=$usuario->listar();
-$listatipo=$tipo->listar();
-?>
 
+require_once "classes/Comentario.php";
+require_once "classes/Usuario.php";
+$comentario=new Comentario();
+$lista=$comentario->listar();
+$usuario=new Usuario();
+$listar_user=$usuario->listar();
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+  <head>
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,9 +20,11 @@ $listatipo=$tipo->listar();
     <link rel="stylesheet" href="estilo.css">
 
     <title>Argentina</title>
-</head>
-<body>
-<nav class="navbar  navbar-expand-lg navbar navbar-light" style="background-color: #b8d1e6;">
+  </head>
+  <body>
+   
+    <?php include "verificar.php"; ?>
+    <nav class="navbar  navbar-expand-lg navbar navbar-light" style="background-color: #b8d1e6;">
       <div class="container-fluid">
         <a class="navbar-brand" href="home.html"><img src="img/bandeira-arg.jpg" width="50px"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
@@ -55,30 +59,40 @@ $listatipo=$tipo->listar();
           </div>
       </div>
     </nav>
-<center>
-    <h1>Cadastre-se</h1>
-    <form action="efetuar-cadastro.php" method="POST">
+    <br>
+
+
+
+
+    <center>
+    <h1>Faça um comentário</h1>
+    <form action="novocoment.php" method="POST">
         <br>
         <br>
-        <label for="nome">Nome:</label>
-        <input type="nome" id="nome" name="nome">
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email">
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha">
-        <select name="tipo" id="tipo">
-      <option value='2'>Selecione</option> 
-<center>      
-            <?php
-              foreach($listatipo as $tipo):
-              echo "<option value='{$tipo['id']}'>
-              {$tipo['tipo']}
-              </option>";
-              endforeach;
-            ?>
-        </select>
-        <button type="submit" class="btn-login">Cadastre-se</button>
-    </form>
+        
+        <input type="hidden" id="id" name="id">
+        <input type="hidden" id="id_user" name="id_user" value="<?php echo $id_user;?>">
+        <label for="email">comentário:</label> 
+        <textarea rows="5" cols="80"  id="comentario" name="comentario"> </textarea>
+<br>
+<br>
+
+        <button type="submit" class="btn-login">Enviar comentário</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="container-fluid"> 
         <footer class="footer text-center py-1 fixed-bottom"  style="background-color: #b8d1e6;">
     <p><strong>Projeto Volta ao Mundo - Argentina</strong></p>

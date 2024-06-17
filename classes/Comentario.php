@@ -31,8 +31,8 @@ class Comentario{
     }
 
     public function inserir(){
-        $sql="INSERT INTO  comentario (comentarios, id_user) VALUES('{$this->comentarios}, '{$this->id_user}')";
-        include "Classes/conexao.php";
+        $sql="INSERT INTO comentario (comentarios, id_user) VALUES('{$this->comentario}, '{$this->id_user}')";
+        include "classes/conexao.php";
         $conexao->exec($sql);
         echo "Registro gravado com sucesso!";
     }

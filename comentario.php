@@ -75,7 +75,7 @@ $lista=$comentario->listar();
 </table>
 
 <br>
-<a href=""><button type="button" class="btn btn-primary">Novo Comentário</button></a>
+<a href="cadcoment.php"><button type="button" class="btn btn-primary">Novo Comentário</button></a>
 
 <center>
 
