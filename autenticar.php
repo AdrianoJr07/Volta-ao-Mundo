@@ -1,30 +1,34 @@
 <?php
 $email = $_POST["email"];
-$senhalimpa= $_POST["senha"];
-$senha=hash("sha256",$senhalimpa);
+$senhalimpa = $_POST["senha"];
 
+$senha = hash("sha256", $senhalimpa);
 
-$sql = "SELECT * FROM usuario WHERE 
-        email=:email and senha=:senha";
+$sql = "SELECT * FROM usuario WHERE email = :email AND senha = :senha";
 
 include_once "classes/conexao.php";
 $resultado = $conexao->prepare($sql);
 $resultado->bindParam(':email', $email);
 $resultado->bindParam(':senha', $senha);
 $resultado->execute();
-$linha=$resultado->fetch();
-$usuario_logado=$linha ['email'];
+$linha = $resultado->fetch();
 
-
-
-if ($usuario_logado == null) {
-	header('Location: erro.php');
-} 
-
-
-else{
-	session_start();
-	$_SESSION['usuario_logado'] = $usuario_logado;
-	header('Location: adm.php');
+if ($linha && $linha['tipo'] == 2) {
+    session_start();
+    $_SESSION['userid'] = $linha['id'];
+    $_SESSION['usuario_logado'] = $linha['email'];
+    $_SESSION['tipo_usuario'] = $linha['tipo'];
+    header('Location: comentario.php');
+    exit;
+} elseif($linha && $linha['tipo'] == 1) {
+    session_start();
+    $_SESSION['userid'] = $linha['id'];
+    $_SESSION['usuario_logado'] = $linha['email'];
+    $_SESSION['tipo_usuario'] = $linha['tipo'];
+    header('Location: adm.php');
+    exit;
+}else{
+    header('Location: erro.php');
+    exit;
 }
 ?>

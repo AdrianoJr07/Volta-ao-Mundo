@@ -1,20 +1,11 @@
 <?php
-session_start();
 require_once "classes/Comentario.php";
-require_once "classes/Usuario.php";
+$comentario=new Comentario();
+$lista=$comentario->listar();
 
-// Verificar se o usuário está logado
-if (!isset($_SESSION['id_user'])) {
-    header('Location: login.php');
-    exit;
-}
-$comentario = new Comentario();
-$usuario = new Usuario();
-$lista = $comentario->listar();
-$listausuario = $usuario->listar();
-
-$userid = $_SESSION['userid'];
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -30,8 +21,6 @@ $userid = $_SESSION['userid'];
     <title>Argentina</title>
   </head>
   <body>
-   
-    
     <nav class="navbar  navbar-expand-lg navbar navbar-light" style="background-color: #b8d1e6;">
       <div class="container-fluid">
         <a class="navbar-brand" href="home.html"><img src="img/bandeira-arg.jpg" width="50px"></a>
@@ -69,30 +58,23 @@ $userid = $_SESSION['userid'];
     </nav>
     <br>
 
-
-
-
     <center>
-    <h1>Faça um comentário</h1>
-    <form action="novocoment.php" method="POST">
-        <br>
-        <br>
-        
-        <input type="hidden" id="id" name="id">
-        <input type="hidden" id="id_user" name="id_user" value="<?php echo $id_user;?>">
-        <label for="email">comentário:</label> 
-        <textarea rows="5" cols="80"  id="comentario" name="comentario"> </textarea>
-<br>
-<br>
+    <table border="5">
+    <tr>
+        <th>Email</th>
+        <th>Comentários</th> 
+    </tr>
 
-        <button type="submit" class="btn-login">Enviar comentário</button>
-</form>
+    <?php foreach ($lista as $linha): ?>
+        <tr>
+            <td><?php echo $linha['email']; ?></td>
+            <td><?php echo $linha['comentarios']; ?></td>
+        </tr>
+    <?php endforeach; ?> 
+</table>
+<center>
 
 
-
-<?php
-
-?>
 
 
 

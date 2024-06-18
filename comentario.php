@@ -76,6 +76,7 @@ $lista=$comentario->listar();
 
 <br>
 <a href="cadcoment.php"><button type="button" class="btn btn-primary">Novo Comentário</button></a>
+<a href="logout.php">Sair</a>
 
 <center>
 

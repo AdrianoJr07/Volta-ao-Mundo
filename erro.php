@@ -49,7 +49,7 @@
 <br>
 
 <center>
-    <h1>Acesso negado, tente novamente</h1>
+    <h1>Usuario não encontrado, tente novamente</h1>
 <center>    
 <br>
 <br>

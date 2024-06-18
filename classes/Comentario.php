@@ -3,6 +3,7 @@ class Comentario{
     public $id;
     public $comentarios;
     public $id_user;
+    public $status;
 
     public function __construct($id=false){
         if($id){
@@ -12,10 +13,10 @@ class Comentario{
     }
 
     public function listar(){
-        $sql="SELECT c.id, c.comentarios,u.email as email from comentario c join usuario u on c.id_user = u.id ";
+        $sql="SELECT c.id, c.comentarios, u.email as email, c.status FROM comentario c JOIN usuario u ON c.id_user = u.id WHERE c.status=1";
         include "classes/conexao.php";
-        $resultado=$conexao->query($sql);
-        $lista=$resultado->fetchAll();
+        $resultado = $conexao->query($sql);
+        $lista = $resultado->fetchAll();
         return $lista;
     }
 
@@ -37,5 +38,8 @@ class Comentario{
         echo "Registro gravado com sucesso!";
     }
 }
+
+
+
 
 ?>

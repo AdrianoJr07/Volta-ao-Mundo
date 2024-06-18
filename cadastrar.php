@@ -61,22 +61,15 @@ $listatipo=$tipo->listar();
         <br>
         <br>
         <label for="nome">Nome:</label>
-        <input type="nome" id="nome" name="nome">
+        <input type="nome" id="nome" name="nome"><br><br>
         <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email"><br><br>
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha">
-        <select name="tipo" id="tipo">
-      <option value='2'>Selecione</option> 
+       
 <center>      
-            <?php
-              foreach($listatipo as $tipo):
-              echo "<option value='{$tipo['id']}'>
-              {$tipo['tipo']}
-              </option>";
-              endforeach;
-            ?>
-        </select>
+        <br><br>   
+        
         <button type="submit" class="btn-login">Cadastre-se</button>
     </form>
     <div class="container-fluid"> 

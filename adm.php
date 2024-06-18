@@ -1,3 +1,4 @@
+<?php include_once "verificar.php" ?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -38,14 +39,20 @@
               <li class="nav-item">
                 <a class="nav-link" href="comentario.php">Comentários</a>
               </li>
+</ul>
+              <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <a class="nav-link" href="login.php">Login</a>
               </li>
+           
             </ul>
           </div>
       </div>
     </nav>
 <h1>Bienvenido Cabron</h1>
+<br>
+<br>
+<button> <a href="listarcomentadm.php">Ver comentários</a></button>
 <button><a href="sair.php">Sair</a></button>
 
 <div class="container-fluid"> 
