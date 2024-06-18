@@ -44,13 +44,11 @@ $lista=$comentario->listar();
               <li class="nav-item">
                 <a class="nav-link" href="messi.html">Messi</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="comentario.php">Comentários</a>
-              </li>
+              
             </ul>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="login.php">Login</a>
+                <a class="nav-link" href="logout.php">Logout</a>
               </li>
             </ul>
           </div>
@@ -72,7 +70,10 @@ $lista=$comentario->listar();
         </tr>
     <?php endforeach; ?> 
 </table>
+<a href="espera.php">Perguntas em espera</a>
+<button><a href="adm.php">voltar</a></button>
 <center>
+
 
 
 

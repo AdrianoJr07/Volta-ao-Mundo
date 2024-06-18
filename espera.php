@@ -7,7 +7,7 @@ if (!isset($_SESSION['id_user'])) {
 
 require_once "classes/Comentario.php";
 $comentarios = new Comentario();
-$lista = $comentarios->listar();
+$lista = $comentarios->listarespera();
 ?>
 
 <!DOCTYPE html>
@@ -57,21 +57,30 @@ $lista = $comentarios->listar();
     <br>
 
     <center>
-        <table border="5">
+    <table border="3">
             <tr>
                 <th>Email</th>
                 <th>Comentários</th>
+                <th>Ações</th>
             </tr>
+
             <?php foreach ($lista as $linha): ?>
                 <tr>
                     <td><?php echo $linha['email']; ?></td>
                     <td><?php echo $linha['comentarios']; ?></td>
+                    <td>
+                        <form action="alterarcomentario.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
+                            <input type="hidden" name="acao" value="aceitar">
+                            <button type="submit" class="btn btn-success">Aceitar</button>
+                        </form>
+                        <td><a href="excluircomentario.php?id=<?=$linha['id']?>"><button type="submit" class="btn btn-danger">Excluir</button></a></td>
+                        
+                    </td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endforeach; ?> 
         </table>
-        <center>
-            <a href="cadcoment.php">Novo comentario </a>
-        </center>
+        <button><a href="listarcomentadm.php">voltar</a></button>
     </center>
 
     <div class="container-fluid">

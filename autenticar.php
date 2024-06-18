@@ -15,14 +15,14 @@ $linha = $resultado->fetch();
 
 if ($linha && $linha['tipo'] == 2) {
     session_start();
-    $_SESSION['userid'] = $linha['id'];
+    $_SESSION['id_user'] = $linha['id'];
     $_SESSION['usuario_logado'] = $linha['email'];
     $_SESSION['tipo_usuario'] = $linha['tipo'];
     header('Location: comentario.php');
     exit;
 } elseif($linha && $linha['tipo'] == 1) {
     session_start();
-    $_SESSION['userid'] = $linha['id'];
+    $_SESSION['id_user'] = $linha['id'];
     $_SESSION['usuario_logado'] = $linha['email'];
     $_SESSION['tipo_usuario'] = $linha['tipo'];
     header('Location: adm.php');

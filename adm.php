@@ -36,25 +36,19 @@
               <li class="nav-item">
                 <a class="nav-link" href="messi.html">Messi </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="comentario.php">Comentários</a>
-              </li>
+              
 </ul>
-              <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="login.php">Login</a>
-              </li>
-           
-            </ul>
+              
           </div>
       </div>
     </nav>
-<h1>Bienvenido Cabron</h1>
+    <center>
+<h1>Area do Admin</h1>
 <br>
 <br>
 <button> <a href="listarcomentadm.php">Ver comentários</a></button>
 <button><a href="sair.php">Sair</a></button>
-
+</center>
 <div class="container-fluid"> 
         <footer class="footer text-center py-1 fixed-bottom"  style="background-color: #b8d1e6;">
     <p><strong>Projeto Volta ao Mundo - Argentina</strong></p>
